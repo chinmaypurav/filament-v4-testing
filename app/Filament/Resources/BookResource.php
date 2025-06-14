@@ -9,7 +9,6 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -33,17 +32,6 @@ class BookResource extends Resource
 
                 TextInput::make('description')
                     ->required(),
-
-                TextInput::make('published_at')
-                    ->required(),
-
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn (?Book $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn (?Book $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -56,8 +44,6 @@ class BookResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('description'),
-
-                TextColumn::make('published_at'),
             ])
             ->filters([
                 //

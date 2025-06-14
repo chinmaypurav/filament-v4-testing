@@ -15,7 +15,6 @@ class BookFactory extends Factory
         return [
             'title' => fake()->word(),
             'description' => fake()->text(),
-            'published_at' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

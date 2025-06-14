@@ -12,13 +12,5 @@ class Book extends Model
     protected $fillable = [
         'title',
         'description',
-        'published_at',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'published_at' => 'datetime:Y-m-d',
-        ];
-    }
 }

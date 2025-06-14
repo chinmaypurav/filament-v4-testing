@@ -8,6 +8,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ReplicateAction;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -62,6 +63,14 @@ class BookResource extends Resource
                 //
             ])
             ->recordActions([
+                ReplicateAction::make()
+                    ->mutateRecordDataUsing(function (array $data): array {
+                        // dd('artisan');
+                        // This is never invoked
+                        $data['title'] = 'New Title Book';
+
+                        return $data;
+                    }),
                 EditAction::make(),
                 DeleteAction::make(),
             ])
